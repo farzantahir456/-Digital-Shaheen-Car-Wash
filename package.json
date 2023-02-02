@@ -1,28 +1,23 @@
 {
-  "name": "-digital-shaheen-car-wash",
+  "name": "be",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "app.js",
+    "dev": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/farzantahir456/-Digital-Shaheen-Car-Wash.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/farzantahir456/-Digital-Shaheen-Car-Wash/issues"
-  },
-  "homepage": "https://github.com/farzantahir456/-Digital-Shaheen-Car-Wash#readme",
+  "keywords": [],
+  "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
     "nodemon": "^2.0.20",
-    "pg": "^8.9.0"
+    "pg": "^8.8.0"
   }
 }
