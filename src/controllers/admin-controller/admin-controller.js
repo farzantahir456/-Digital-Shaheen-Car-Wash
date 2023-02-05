@@ -13,14 +13,26 @@ const getworker = (req, res) => {
   };
 
 
-  const getcustomer = (request, response) => {
-    pool.query("SELECT * FROM customers", (err, results) => {
+  const getcustomer = (req, res) => {
+    pool.query(`SELECT * FROM customers`, (err, results) => {
       if (err) {
         throw err;
       }
-      response.status(201).json(results.rows);
+      res.status(201).json(results.rows);
     });
   };
+
+  const getappointment=(req,res)=>{
+    pool.query (`SELECT customer_name, worker_name, service_type from appointments
+    JOIN customers on appointments.customer_id = customers.customer_id
+    JOIN workers on appointments.worker_id = workers.worker_id
+    JOIN services on appointments.service_id = services.service_id  `,(err,results)=>{
+      if(err){
+        throw err;
+      }
+      res.status(200).json(results.rows)
+    })
+  }
 
   // const updateadminprofile = (request, response) => {
   //   const admin_id = parseInt(request.params.id);
@@ -36,6 +48,7 @@ const getworker = (req, res) => {
   module.exports = {
     getworker, 
     // updateadminprofile,
-    getcustomer
+    getcustomer,
+    getappointment
     
   };

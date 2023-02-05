@@ -4,6 +4,6 @@ const admin = express.Router();
 
 const adminLogin=require('../../controllers/admin-controller/authAdminController')
 
-admin.get("/",adminLogin);
+admin.post("/",adminLogin);
 
 module.exports=admin
