@@ -7,4 +7,6 @@ const { getworker, getcustomer} =require('../../controllers/admin-controller/adm
 adminRoute.get("/", getworker);
 adminRoute.get("/customer", getcustomer);
 // adminRoute.put("/:id", updateadminprofile);
+// 
+// 
 module.exports= adminRoute ;
