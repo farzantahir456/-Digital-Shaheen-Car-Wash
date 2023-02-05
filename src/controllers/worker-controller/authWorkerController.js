@@ -5,9 +5,9 @@ const JWT = require('jsonwebtoken')
 
 
 const createworker = (request, response) => {
-  const { worker_name, worker_phone_no, worker_email, worker_password } = request.body;
-  pool.query(`INSERT INTO workers (worker_name,worker_phone_no,worker_email,worker_password)
-  VALUES('${worker_name}','${worker_phone_no}','${worker_email}','${worker_password}')`, (error, results) => {
+  const { worker_name,worker_cnic,worker_phone_no,worker_email,worker_password,worker_address,worker_status} = request.body;
+  pool.query(`INSERT INTO workers (worker_name,worker_cnic,worker_phone_no,worker_email,worker_password,worker_address,worker_status)
+  VALUES('${worker_name}','${worker_cnic}','${worker_phone_no}','${worker_email}','${worker_password}','${worker_address}','${worker_status}')`, (error, results) => {
     if (error) {
       throw error;
     }
@@ -18,11 +18,11 @@ const createworker = (request, response) => {
 
 
 const addWorker = async (req, res) => {
-  const { worker_email, worker_password } = req.body
+  const { worker_email, worker_password} = req.body
   try {
     const result = await pool.query(`SELECT * FROM workers WHERE worker_email = $1 AND worker_password = $2`, [worker_email, worker_password])
-    const { worker_name: secret } = result.rows[0]
-    if(result.rowCount > 0){
+    const { worker_password: secret } = result.rows[0]
+    if(result.rowCount >0){
       const jwtToken = JWT.sign(secret,process.env.WEB_TOKEN)
       res.status(200).json({message: jwtToken})
     }else{
@@ -30,7 +30,7 @@ const addWorker = async (req, res) => {
     }
     
   } catch (error) {
-    
+    console.log(error);
   }
 
   // (error,result)=>{
