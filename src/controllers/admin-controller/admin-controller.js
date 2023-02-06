@@ -13,8 +13,8 @@ const getworker = (req, res) => {
   };
 
 
-  const getcustomer = (req, res) => {
-    pool.query(`SELECT * FROM customers`, (err, results) => {
+  const appointments = (req, res) => {
+    pool.query(`SELECT * FROM appointments`, (err, results) => {
       if (err) {
         throw err;
       }
@@ -24,7 +24,6 @@ const getworker = (req, res) => {
 
   const getappointment=(req,res)=>{
     pool.query (`SELECT customer_name, worker_name, service_type from appointments
-    JOIN customers on appointments.customer_id = customers.customer_id
     JOIN workers on appointments.worker_id = workers.worker_id
     JOIN services on appointments.service_id = services.service_id  `,(err,results)=>{
       if(err){
@@ -48,7 +47,7 @@ const getworker = (req, res) => {
   module.exports = {
     getworker, 
     // updateadminprofile,
-    getcustomer,
+    appointments,
     getappointment
     
   };
