@@ -13,7 +13,7 @@ const adminLogin = (req,res)=>{
         const jwtToken = JWT.sign(userData,process.env.WEB_TOKEN)
         res.status(200).json(jwtToken)
     })
-  }
+  } 
 
 
 
