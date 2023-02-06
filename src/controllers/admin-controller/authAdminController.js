@@ -14,5 +14,5 @@ const adminLogin = (req,res)=>{
         res.status(200).json(jwtToken)
     })
   }
-  module.exports = {adminLogin}
+  module.exports = adminLogin
  
