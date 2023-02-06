@@ -11,7 +11,7 @@ const admin=require('./src/routes/admin/authAdminRoutes')
 app.use(express.json());
 app.use('/worker', userRoute);
 app.use('/admin', adminRoute);
-app.use('/adminLogin',admin)
+app.use('/adminlogin',admin)
 
 
 app.listen(port, () => {

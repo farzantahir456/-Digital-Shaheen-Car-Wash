@@ -1,9 +1,9 @@
 const { pool } = require("../../connection/postgresql/connection");
-const JWT =require('jsonwebtoken')
+const JWT = require('jsonwebtoken')
 
 const adminLogin = (req,res)=>{
-    const{ admin_email,admin_password } = req.body
-    pool.query(`SELECT * FROM admin WHERE admin_email = '${admin_email}' AND admin_password = '${admin_password}'`,
+    const {admin_email,admin_password} = req.body
+    pool.query(`SELECT * FROM admin WHERE admin_email ='${admin_email}' AND admin_password = '${admin_password}'`,
     (error,result)=>{
         const [ userData ] = result.rows
         if(userData == ''){
@@ -14,7 +14,5 @@ const adminLogin = (req,res)=>{
         res.status(200).json(jwtToken)
     })
   }
-
-
-
-  module.exports = adminLogin
+  module.exports = {adminLogin}
+ 
