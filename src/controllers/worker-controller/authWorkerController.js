@@ -17,7 +17,7 @@ const createworker = (request, response) => {
 };
 
 
-const addWorker = async (req, res) => {
+const workerLogin = async (req, res) => {
   const { worker_email, worker_password} = req.body
   try {
     const result = await pool.query(`SELECT * FROM workers WHERE worker_email = $1 AND worker_password = $2`, [worker_email, worker_password])
@@ -32,49 +32,10 @@ const addWorker = async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-
-  // (error,result)=>{
-  //   const [ userData ] = result.rows
-  //   console.log("add worker here", userData);
-  //   // console.log("in here");
-  //     // if(userData == ''){
-  //     //     res.status(400).json("Invalid Phone or password")
-  //     // }
-  //     if(error){
-  //       res.status(404).json("Invalid Cradentials")
-  //     }
-  //     const jwtToken = JWT.sign(userData,process.env.WEB_TOKEN)
-  //     res.status(200).json(jwtToken)
-  // }
   
 }
 
-const getworker = (req, res) => {
-  const worker_id = req.user;
-  pool.query(`SELECT * FROM workers where worker_id=${worker_id}`, (err, results) => {
-    if (err) {
-      throw err;
-    }
-    res.status(200).json(results.rows);
-  });
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = {
-  getworker,
   createworker,
-  addWorker
+  workerLogin
 };
