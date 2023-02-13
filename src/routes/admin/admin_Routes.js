@@ -8,5 +8,5 @@ const auth=require("../../middleware/admin/admin-auth")
 adminRoute.get("/worker", auth,getworker);
 adminRoute.get("/customerAppointment", auth,appointments);
 adminRoute.get("/appointment",auth,getappointment)
-
-module.exports= adminRoute ;
+ 
+module.exports= adminRoute;

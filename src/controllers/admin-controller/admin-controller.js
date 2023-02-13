@@ -1,5 +1,3 @@
-
-
 const { pool } = require("../../connection/postgresql/connection")
 
 const getworker = (req, res) => {
@@ -32,7 +30,6 @@ const getworker = (req, res) => {
       res.status(200).json(results.rows)
     })
   }
-
 
   module.exports = {
     getworker, 

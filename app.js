@@ -16,7 +16,6 @@ app.use('/worker', userRoute);
 app.use('/admin', adminRoute);
 app.use('/adminLogin',admin)
 app.use('/customer',customerRoute)
-
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
