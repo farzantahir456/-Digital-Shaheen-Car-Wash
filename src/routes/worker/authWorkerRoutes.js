@@ -2,13 +2,9 @@ const express = require("express");
 const auth=require("../../middleware/worker/worker-auth")
 const userRoute = express.Router();
 
-const { getworker, createworker,addWorker} =require('../../controllers/worker-controller/authWorkerController')
-
-// userRoute.get('/', info);
-userRoute.get("/",auth, getworker);
+const {  createworker,workerLogin} =require('../../controllers/worker-controller/authWorkerController')
 
 userRoute.post("/create",createworker);
-
-userRoute.post("/login",addWorker)
+userRoute.post("/login",workerLogin)
 
 module.exports= userRoute ;
