@@ -1,8 +1,7 @@
 const express = require('express');
-
+const cors= require('cors')
 const app = express();
-
-
+app.use(cors())
 require('dotenv').config()
 const port = process.env.WEB_PORT;
 const userRoute=require('./src/routes/worker/authWorkerRoutes')
@@ -14,7 +13,6 @@ app.use('/worker', userRoute);
 app.use('/admin', adminRoute);
 app.use('/adminLogin',admin)
 app.use('/customer',customerRoute)
-
 app.listen(port, () => {
   console.log(`App running on port ${port}.`);
 });
