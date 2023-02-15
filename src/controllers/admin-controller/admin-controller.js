@@ -4,7 +4,7 @@ const getworker = (req, res) => {
 
     pool.query(`SELECT * FROM workers `, (err, results) => {
       if (err) {
-        throw err;
+       res.status(500).json("server error");
       }
       res.status(200).json(results.rows);
     });
@@ -14,7 +14,7 @@ const getworker = (req, res) => {
   const appointments = (req, res) => {
     pool.query(`SELECT * FROM appointments`, (err, results) => {
       if (err) {
-        throw err;
+       res.status(500).json("server error");
       }
       res.status(201).json(results.rows);
     });
@@ -25,7 +25,7 @@ const getworker = (req, res) => {
     JOIN workers on appointments.worker_id = workers.worker_id
     JOIN services on appointments.service_id = services.service_id  `,(err,results)=>{
       if(err){
-        throw err;
+      res.status(500).json("server error");
       }
       res.status(200).json(results.rows)
     })
