@@ -5,7 +5,7 @@ const createworker = (request, response) => {
   pool.query(`INSERT INTO workers (worker_name,worker_cnic,worker_phone_no,worker_email,worker_password,worker_address,worker_status)
   VALUES('${worker_name}','${worker_cnic}','${worker_phone_no}','${worker_email}','${worker_password}','${worker_address}','${worker_status}')`, (error, results) => {
     if (error) {
-      res.status(500).json("Internal server error");
+      res.status(500).json("internal Server Error")
     }
     response.status(200).json("worker inserted");
   }
