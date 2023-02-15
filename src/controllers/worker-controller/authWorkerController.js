@@ -5,7 +5,7 @@ const createworker = (request, response) => {
   pool.query(`INSERT INTO workers (worker_name,worker_cnic,worker_phone_no,worker_email,worker_password,worker_address,worker_status)
   VALUES('${worker_name}','${worker_cnic}','${worker_phone_no}','${worker_email}','${worker_password}','${worker_address}','${worker_status}')`, (error, results) => {
     if (error) {
-      throw error;
+      res.status(500).json("Internal server error");
     }
     response.status(200).json("worker inserted");
   }
@@ -20,7 +20,7 @@ const workerLogin = (req,res)=>{
   (error,result)=>{
       const  userData  = result.rows[0]
       if(result.rows.length === 0){
-          return res.status(400).json("Invalid Phone or password")
+          return res.status(400).json("Invalid email or password")
       }
        else if(error)  return res.status(500).json(error.message)
       const jwtToken = JWT.sign(userData,process.env.WEB_TOKEN)
